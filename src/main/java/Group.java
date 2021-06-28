@@ -4,6 +4,7 @@ import org.hibernate.annotations.IndexColumn;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 
 @Entity
@@ -23,7 +24,7 @@ public class Group {
     private LocalDateTime start;
 
     @OrderColumn(name = "climbers", nullable = false)
-    @OneToMany(fetch = FetchType.LAZY)
-    private Climber[] climbers;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group_id")
+    private HashSet<Climber> climbers;
 
 }
